@@ -1,0 +1,83 @@
+.input_password input {
+  text-align: left !important;
+}
+.ant-form-item {
+  // margin-bottom: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+.ant-form-item-float {
+  // position: relative;
+
+  .ant-calendar-picker-input > input {
+    padding: 0;
+    height: auto;
+  }
+  input,
+  .ant-calendar-picker-input.ant-input,
+  .ant-select-auto-complete .ant-select-search input,
+  .ant-input-number,
+  .ant-select-selection {
+    // height: (@input-height-lg + 6.7px);
+    // padding: (@input-padding-vertical-lg * 3) @input-padding-horizontal;
+    height: (@input-height-lg + 2.5px);
+    padding: (@input-padding-vertical-lg * 2.7) @input-padding-horizontal;
+    padding-bottom: 0;
+  }
+
+  .ant-input-number {
+    line-height: 0;
+    .ant-input-number-input-wrap > .ant-input-number-input {
+      padding: 0;
+      height: (@input-height-lg + 6.7px) / 2;
+    }
+  }
+
+  .ant-form-item-control {
+    line-height: 0;
+
+    .ant-select-auto-complete .ant-select-selection {
+      padding: 0;
+    }
+  }
+
+  .ant-form-explain,
+  > .ant-form-item-label {
+    position: absolute;
+    width: auto;
+    top: 2px;
+    left: 12px;
+    background-color: transparent;
+    padding-bottom: 0;
+    line-height: 1.75;
+    // display: inline-block;
+    // visibility: hidden;
+    // opacity: 0;
+    transition: all 0.2s ease-in-out;
+    z-index: 9;
+    pointer-events: none;
+
+    > label {
+      font-size: @font-size-base + 1px;
+      color: @primary-color;
+    }
+  }
+  // .ant-form-item-control {
+  .ant-select-search__field {
+    padding: 0;
+  }
+  textarea {
+    padding: (@input-padding-vertical-lg * 4) @input-padding-horizontal;
+    padding-bottom: 0;
+  }
+
+  &.has-error .ant-form-item-label > label {
+    display: none;
+    color: @error-color;
+  }
+
+  .ant-select-selection__rendered {
+    line-height: 25px !important;
+  }
+
+  // }
+}

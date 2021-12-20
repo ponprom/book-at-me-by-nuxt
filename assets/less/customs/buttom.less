@@ -1,0 +1,33 @@
+@import '~ant-design-vue/lib/style/mixins/index';
+@import '~ant-design-vue/lib/button/style/mixin';
+
+@btn-prefix-cls: ~'@{ant-prefix}-btn';
+
+// Button styles
+// -----------------------------
+.@{btn-prefix-cls} {
+  &-primary {
+    .button-variant-primary(#fff, #667eea);
+  }
+  &-success {
+    .button-variant-primary(@btn-success-color, @btn-success-bg);
+  }
+  &-warning {
+    .button-variant-primary(@btn-warning-color, @btn-warning-bg);
+  }
+  &-info {
+    .button-variant-primary(@btn-info-color, @btn-info-bg);
+  }
+  &-purple {
+    .button-variant-primary(#fff, #8B5CF6);
+  }
+  &-gray {
+    .button-variant-primary(#fff, #95A5A6);
+  }
+  &-blue {
+    .button-variant-primary(#fff, #60A5FA);
+  }
+  &-yellow {
+    .button-variant-primary(#000, @btn-warning-bg);
+  }
+}

@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'RSU';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/rsufont/RSU_light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RSU';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/rsufont/RSU_Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RSU';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/rsufont/RSU_BOLD.ttf') format('truetype');
+}
