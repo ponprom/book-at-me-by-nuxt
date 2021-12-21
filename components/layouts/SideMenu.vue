@@ -12,22 +12,10 @@
       @click="handleCollapsed"
     />
     <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
-      <a-menu-item key="1">
-        <nuxt-link to="/">
-          <a-icon type="home" />
-          <span>หน้าหลัก</span>
-        </nuxt-link>
-      </a-menu-item>
-      <a-menu-item key="2">
-        <nuxt-link to="/comic">
-          <a-icon type="book" />
-          <span>การ์ตูน</span>
-        </nuxt-link>
-      </a-menu-item>
-      <a-menu-item key="3">
-        <nuxt-link to="/novel">
-          <a-icon type="book" />
-          <span>นิยาย</span>
+      <a-menu-item v-for="m in menu" :key="m.key">
+        <nuxt-link :to="m.path">
+          <a-icon :type="m.icon" />
+          <span>{{ m.name }}</span>
         </nuxt-link>
       </a-menu-item>
     </a-menu>
@@ -38,6 +26,26 @@
 export default {
   data() {
     return {
+      menu: [
+        {
+          key: 1,
+          name: 'หน้าหลัก',
+          path: '/',
+          icon: 'home'
+        },
+        {
+          key: 2,
+          name: 'การ์ตูน',
+          path: '/comic',
+          icon: 'book'
+        },
+        {
+          key: 3,
+          name: 'นิยาย',
+          path: '/novel',
+          icon: 'book'
+        }
+      ],
       collapsed: false
     }
   },
