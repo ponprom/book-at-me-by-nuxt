@@ -12,7 +12,7 @@
       @click="handleCollapsed"
     />
     <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
-      <a-menu-item v-for="m in menu" :key="m.key">
+      <a-menu-item v-for="m in menu" :key="m.key" @click="cilckMenu">
         <nuxt-link :to="m.path">
           <a-icon :type="m.icon" />
           <span>{{ m.name }}</span>
@@ -52,6 +52,9 @@ export default {
   methods: {
     handleCollapsed() {
       this.collapsed = !this.collapsed
+    },
+    cilckMenu() {
+      this.$emit('path', this.$route.path)
     }
   }
 }

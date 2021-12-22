@@ -1,10 +1,15 @@
 <template>
   <div>
     <a-layout id="components-layout-demo-custom-trigger">
-      <side-menu />
+      <side-menu @path="getPath" />
       <a-layout>
         <a-layout-header><app-header /></a-layout-header>
-        <a-layout-content id="content-style"><nuxt /></a-layout-content>
+        <!-- <a-breadcrumb class="ml-5 mt-3">
+          <a-breadcrumb-item>{{ path }}</a-breadcrumb-item>
+        </a-breadcrumb> -->
+        <a-layout-content id="content-style">
+          <nuxt />
+        </a-layout-content>
         <a-layout-footer>Footer</a-layout-footer>
       </a-layout>
     </a-layout>
@@ -21,12 +26,18 @@ export default {
   },
   data() {
     return {
-      collapsed: false
+      collapsed: false,
+      path: '/Home'
     }
   },
+  created() {},
   methods: {
     getCollapsed(v) {
       this.collapsed = v
+    },
+    getPath(v) {
+      if (v === '/') this.path = '/Home'
+      this.path = v
     }
   }
 }

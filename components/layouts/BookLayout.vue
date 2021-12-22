@@ -1,27 +1,54 @@
 <template>
   <div>
     <div class="min-h-screen">
-      <!-- <div>
-        <a-button :icon="'appstore'" ></a-button>
-      </div> -->
+      <div class="flex justify-end mr-4 mb-2">
+        <a-icon
+          :style="{ fontSize: '20px' }"
+          :type="`${grid ? 'unordered-list' : 'appstore'}`"
+          class="cursor-pointer"
+          @click="changeLayout"
+        />
+      </div>
       <template v-for="(c, i) in bookList">
         <div
           v-if="i >= pageSize * (current - 1) && i < current * pageSize"
           :key="i"
-          class="inline-block p-2 sm:w-full md:w-1/4 lg:w-1/6 xl:w-1/6"
-          style="height: 350px"
+          :class="`${
+            grid ? 'sm:w-full md:w-1/4 lg:w-1/6 xl:w-1/6' : 'w-full'
+          } inline-block p-2 `"
+          :style="`${grid ? 'height: 350px' : 'height: 190px'}`"
+          @click="showDetail(c)"
         >
           <div
-            class="flex flex-col justify-items-center p-3 h-full shadow-md cursor-pointer hover:shadow-xl"
+            :class="`${
+              grid ? 'flex-col' : 'w-full'
+            } flex  justify-items-center p-3 h-full shadow-md cursor-pointer hover:shadow-xl`"
           >
-            <div style="height: 250px; width: 172px truncate">
+            <div
+              :class="`${grid ? '' : 'mr-3'}`"
+              :style="`${
+                grid
+                  ? 'height: 250px; width: 172px'
+                  : 'height: 150px; width: 72px'
+              } truncate`"
+            >
               <img
                 :src="c.img"
                 class="w-full h-full"
                 style="border: 1px solid #ddd"
               />
             </div>
-            <div class="mt-2">{{ c.bookNameTh }}</div>
+            <div
+              :class="`flex ${grid ? '' : 'justify-between w-full'}`"
+              class=""
+            >
+              <div :class="`${grid ? ' mt-3' : 'text-lg mt-4'}`">
+                {{ c.bookNameTh }}
+              </div>
+              <div :class="`${grid ? ' mt-3 ml-2 mr-2' : ''}`">
+                <a-icon type="heart" :style="{ fontSize: '17px' }" />
+              </div>
+            </div>
           </div>
         </div>
       </template>
@@ -35,11 +62,21 @@
         @change="onChange"
       />
     </div>
+
+    <book-layout
+      :item="bookItem"
+      :visible="modalVisible"
+      @cancel="handleCancel"
+    />
   </div>
 </template>
 
 <script>
+import BookLayout from '@/components/Modal/BookDetail'
 export default {
+  components: {
+    BookLayout
+  },
   props: {
     bookList: {
       type: Array,
@@ -52,12 +89,25 @@ export default {
   },
   data() {
     return {
-      current: 1
+      current: 1,
+      grid: true,
+      bookItem: null,
+      modalVisible: false
     }
   },
   methods: {
     onChange(v) {
       this.current = v
+    },
+    changeLayout() {
+      this.grid = !this.grid
+    },
+    showDetail(v) {
+      this.modalVisible = !this.modalVisible
+      this.bookItem = v
+    },
+    handleCancel() {
+      this.modalVisible = !this.modalVisible
     }
   }
 }
