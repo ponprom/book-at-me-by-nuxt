@@ -46,7 +46,7 @@
                 {{ c.bookNameTh }}
               </div>
               <div :class="`${grid ? ' mt-3 ml-2 mr-2' : ''}`">
-                <a-icon type="heart" :style="{ fontSize: '17px' }" />
+                <a-icon type="heart" class="hover:text-red-500" :style="{ fontSize: '17px' }" />
               </div>
             </div>
           </div>

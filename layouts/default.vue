@@ -1,12 +1,12 @@
 <template>
   <div>
     <a-layout id="components-layout-demo-custom-trigger">
-      <side-menu @path="getPath" />
+      <side-menu @pathName="getPathName" />
       <a-layout>
         <a-layout-header><app-header /></a-layout-header>
-        <!-- <a-breadcrumb class="ml-5 mt-3">
-          <a-breadcrumb-item>{{ path }}</a-breadcrumb-item>
-        </a-breadcrumb> -->
+        <a-breadcrumb class="ml-5 mt-3">
+          <a-breadcrumb-item>{{ pathName }}</a-breadcrumb-item>
+        </a-breadcrumb>
         <a-layout-content id="content-style">
           <nuxt />
         </a-layout-content>
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       collapsed: false,
-      path: '/Home'
+      pathName: 'Home'
     }
   },
   created() {},
@@ -35,9 +35,10 @@ export default {
     getCollapsed(v) {
       this.collapsed = v
     },
-    getPath(v) {
-      if (v === '/') this.path = '/Home'
-      this.path = v
+    getPathName(v) {
+      v === 'index'
+        ? (this.pathName = 'Home')
+        : (this.pathName = v.charAt(0).toUpperCase() + v.slice(1))
     }
   }
 }

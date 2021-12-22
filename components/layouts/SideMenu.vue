@@ -11,7 +11,7 @@
       :type="collapsed ? 'menu-unfold' : 'menu-fold'"
       @click="handleCollapsed"
     />
-    <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
+    <a-menu theme="dark" mode="inline" :default-selected-keys="[1]">
       <a-menu-item v-for="m in menu" :key="m.key" @click="cilckMenu">
         <nuxt-link :to="m.path">
           <a-icon :type="m.icon" />
@@ -29,21 +29,27 @@ export default {
       menu: [
         {
           key: 1,
-          name: 'หน้าหลัก',
+          name: 'Home',
           path: '/',
           icon: 'home'
         },
         {
           key: 2,
-          name: 'การ์ตูน',
+          name: 'Comic',
           path: '/comic',
           icon: 'book'
         },
         {
           key: 3,
-          name: 'นิยาย',
+          name: 'Novel',
           path: '/novel',
           icon: 'book'
+        },
+        {
+          key: 4,
+          name: 'Manage',
+          path: '/manage',
+          icon: 'form'
         }
       ],
       collapsed: false
@@ -54,7 +60,7 @@ export default {
       this.collapsed = !this.collapsed
     },
     cilckMenu() {
-      this.$emit('path', this.$route.path)
+      this.$emit('pathName', this.$route.name)
     }
   }
 }

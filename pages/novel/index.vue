@@ -1,6 +1,5 @@
 <template>
   <div>
-    novel
     <book-layout :book-list="novels" :page-size="18" />
   </div>
 </template>

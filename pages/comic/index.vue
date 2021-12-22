@@ -1,6 +1,5 @@
 <template>
   <div>
-    comic
     <book-layout :book-list="comics" :page-size="18"/>
   </div>
 </template>
