@@ -10,7 +10,7 @@
         <a-layout-content id="content-style">
           <nuxt />
         </a-layout-content>
-        <a-layout-footer>Footer</a-layout-footer>
+        <a-layout-footer></a-layout-footer>
       </a-layout>
     </a-layout>
   </div>

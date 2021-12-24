@@ -6,14 +6,14 @@
       </a-col>
       <a-col :span="6">
         <div class="flex justify-end">
-          <nuxt-link to="/login">
-            <div class="mr-3">เข้าสู่ระบบ</div>
-          </nuxt-link>
-          <nuxt-link to="/register">
-            <a-button type="danger" class="bg-red-500 self-center">
-              สมัครสมาชิค
-            </a-button>
-          </nuxt-link>
+          <!-- <nuxt-link to="/login"> -->
+          <div class="mr-3">Login</div>
+          <!-- </nuxt-link> -->
+          <!-- <nuxt-link to="/register"> -->
+          <a-button type="danger" class="bg-red-500 self-center">
+            Register
+          </a-button>
+          <!-- </nuxt-link> -->
         </div>
       </a-col>
     </a-row>

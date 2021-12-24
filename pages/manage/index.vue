@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div><a-button class="mb-2">Add</a-button></div>
+    <div><a-button class="mb-2" @click="showBookForm">Add</a-button></div>
     <a-table :columns="columns" :data-source="books">
       <template slot="BookType" slot-scope="value">
         {{ value === 1 ? 'Novel' : 'Comic' }}
@@ -15,7 +15,11 @@
         </div>
       </template>
       <template slot="Actions" slot-scope="value">
-        <a-button icon="edit" class="mb-2 bg-orange-300"></a-button>
+        <a-button
+          icon="edit"
+          class="mb-2 bg-orange-300"
+          @click="handleEdit(value)"
+        ></a-button>
         <a-button
           icon="delete"
           class="bg-red-400"
@@ -23,11 +27,24 @@
         ></a-button>
       </template>
     </a-table>
+
+    <book-form
+      :item="item"
+      :is-edit="isEdit"
+      :visible="modalVisible"
+      @cancel="handleCancel"
+      @submit="handleSubmit"
+    />
   </div>
 </template>
 
 <script>
+import { cloneDeep } from 'lodash'
+import BookForm from '@/components/Modal/BookForm'
 export default {
+  components: {
+    BookForm
+  },
   data() {
     return {
       books: [
@@ -55,7 +72,10 @@ export default {
           desc: 'ช่วงหน้าร้อนของแฮรรี่ประกอบด้วยวันเกิดที่แย่ที่สุดที่เขาเคยเจอ คำเตือนที่เป็นลางร้ายจากด๊อบบี้ เอลฟ์ประจำบ้าน และการที่รอน วิสลีย์ เพื่อนรักของเขามาพาเขาหนีจากพวกเดอร์สลีย์ด้วยรถยนต์เหาะได้!เมื่อกลับไปเรียนปีสองที่โรงเรียนคาถาพ่อมดแม่มดและเวทมนตร์ศาสตร์ฮอกวอตส์ แฮรรี่ได้ยินเสียงกระซิบแปลกๆดังสะท้อนจากทางเดินว่างเปล่า แล้วการโจมตีก็เริ่มขึ้น นักเรียนหลายคนถุกพบว่ากลายเป็น หิน...ดูเหมือนว่าคำเตือนอันเป็นลางร้ายของด๊อบบี้กำลังจะกลายเป็นจริง',
           img: ' https://drive.google.com/uc?export=view&id=1W9ObOBHqUZ91uAcYpl28IM9dbm2D_xVL'
         }
-      ]
+      ],
+      modalVisible: false,
+      item: null,
+      isEdit: false
     }
   },
   computed: {
@@ -67,7 +87,7 @@ export default {
           scopedSlots: { customRender: 'BookImage' }
         },
         {
-          title: 'Name',
+          title: 'Book Name',
           dataIndex: 'bookNameTh'
         },
         {
@@ -93,7 +113,36 @@ export default {
   },
   methods: {
     handleDelete(key) {
-      this.books = this.books.filter(item => item.key !== key);
+      this.books = this.books.filter((item) => item.key !== key)
+    },
+    showBookForm() {
+      this.modalVisible = !this.modalVisible
+    },
+    handleEdit(v) {
+      this.item = cloneDeep(v)
+      this.isEdit = true
+      this.modalVisible = !this.modalVisible
+    },
+    handleCancel() {
+      this.item = null
+      this.isEdit = false
+      this.modalVisible = !this.modalVisible
+    },
+    handleSubmit(v) {
+      if (!this.isEdit) {
+        this.books.push(v)
+      } else {
+        for (let index = 0; index < this.books.length; index++) {
+          if (this.books[index].key === v.key) {
+            this.books[index].img = v.img
+            this.books[index].bookNameTh = v.bookNameTh
+            this.books[index].authors = v.authors
+            this.books[index].type = v.type
+            this.books[index].desc = v.desc
+          }
+        }
+      }
+      this.handleCancel()
     }
   }
 }

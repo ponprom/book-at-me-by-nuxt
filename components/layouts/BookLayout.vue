@@ -2,12 +2,25 @@
   <div>
     <div class="min-h-screen">
       <div class="flex justify-end mr-4 mb-2">
-        <a-icon
-          :style="{ fontSize: '20px' }"
-          :type="`${grid ? 'unordered-list' : 'appstore'}`"
-          class="cursor-pointer"
-          @click="changeLayout"
-        />
+        <div class="mr-2">
+          <!-- <a-select v-model="genre" style="width: 200px" @change="handleChange">
+            <a-select-option
+              v-for="option in options"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.name }}
+            </a-select-option>
+          </a-select> -->
+        </div>
+        <div>
+          <a-icon
+            :style="{ fontSize: '20px' }"
+            :type="`${grid ? 'unordered-list' : 'appstore'}`"
+            class="cursor-pointer"
+            @click="changeLayout"
+          />
+        </div>
       </div>
       <template v-for="(c, i) in bookList">
         <div
@@ -46,7 +59,11 @@
                 {{ c.bookNameTh }}
               </div>
               <div :class="`${grid ? ' mt-3 ml-2 mr-2' : ''}`">
-                <a-icon type="heart" class="hover:text-red-500" :style="{ fontSize: '17px' }" />
+                <a-icon
+                  type="heart"
+                  class="hover:text-red-500"
+                  :style="{ fontSize: '17px' }"
+                />
               </div>
             </div>
           </div>
@@ -89,10 +106,19 @@ export default {
   },
   data() {
     return {
+      genre: null,
       current: 1,
       grid: true,
       bookItem: null,
       modalVisible: false
+    }
+  },
+  computed: {
+    options() {
+      return [
+        { id: 1, name: 'Novel' },
+        { id: 2, name: 'Comic' }
+      ]
     }
   },
   methods: {
