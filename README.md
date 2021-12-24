@@ -1,5 +1,8 @@
 # BookAtMe_nuxt
 
+## Description
+Book At Me By Nuxt is a simple project about books collection web site by Nuxt.js Framework
+
 ## Build Setup
 
 ```bash
