@@ -5,6 +5,8 @@ Book At Me By Nuxt is a simple project about book collection web site by Nuxt.js
 
 ![Screenshot 2021-12-24 at 17-58-21 BookAtMe_nuxt](https://user-images.githubusercontent.com/27083107/147347116-ee843a6e-1b25-4241-b608-75c6c2cf6965.png)
 
+![Screenshot 2021-12-24 at 18-03-11 BookAtMe_nuxt](https://user-images.githubusercontent.com/27083107/147347465-1fbb18ac-a558-4b6a-bf70-3503e045ff8e.png)
+
 ![Screenshot 2021-12-24 at 17-56-48 BookAtMe_nuxt](https://user-images.githubusercontent.com/27083107/147347267-6f3da40a-fa0a-4847-8c07-720f5ccd5ec7.png)
 
 ![Screenshot 2021-12-24 at 17-57-55 BookAtMe_nuxt](https://user-images.githubusercontent.com/27083107/147347196-90634b2f-682d-419e-91b9-36d1d7807416.png)
