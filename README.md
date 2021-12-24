@@ -1,7 +1,7 @@
 # BookAtMe_nuxt
 
 ## Description
-Book At Me By Nuxt is a simple project about books collection web site by Nuxt.js Framework
+Book At Me By Nuxt is a simple project about book collection web site by Nuxt.js Framework with Ant Design Vue and Tailwind CSS. This project show book collection design layout and CRUD management that use json mockup data.
 
 ## Build Setup
 
